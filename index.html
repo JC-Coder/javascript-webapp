@@ -26,7 +26,7 @@
 	
 	<div class="container hero">
 		<div class="device-info mt-2 mb-4">
-			<p>Battery Level:&nbsp; <span id="batteryLevel">40%</span> </p>
+			<p>Battery Level:&nbsp; <span id="batteryLevel"></span> </p>
 			<p>Users Online:&nbsp; <span id="userOnline">20</span></p>
 		</div>
   			<div class="col-3 h-img">
@@ -62,16 +62,16 @@
 		 		
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
+					<button class="nav-link active btn-pill-1" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
 				</li>
 				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="pills-earn-tab" data-bs-toggle="pill" data-bs-target="#pills-earn" type="button" role="tab" aria-controls="pills-earn" aria-selected="false">Earn</button>
+					<button class="nav-link btn-pill-1 " id="pills-earn-tab" data-bs-toggle="pill" data-bs-target="#pills-earn" type="button" role="tab" aria-controls="pills-earn" aria-selected="false">Earn</button>
 				</li>
 				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="pills-note-tab" data-bs-toggle="pill" data-bs-target="#pills-note" type="button" role="tab" aria-controls="pills-note" aria-selected="false">Notes</button>
+					<button class="nav-link btn-pill-1 " id="pills-note-tab" data-bs-toggle="pill" data-bs-target="#pills-note" type="button" role="tab" aria-controls="pills-note" aria-selected="false">Notes</button>
 				</li>
 				<li class="nav-item" role="presentation">
-						<button class="nav-link" id="pills-withdraw-tab" data-bs-toggle="pill" data-bs-target="#pills-withdraw" type="button" role="tab" aria-controls="pills-withdraw" aria-selected="false">Withdraw</button>
+						<button class="nav-link btn-pill-1 " id="pills-withdraw-tab" data-bs-toggle="pill" data-bs-target="#pills-withdraw" type="button" role="tab" aria-controls="pills-withdraw" aria-selected="false">Withdraw</button>
 					</li>
 			</ul>
 			<div class="divider"></div>
@@ -234,6 +234,9 @@
 		
 		
 		// battery level get 
+		let battLvl = $("#batteryLevel").val();
+		
+		
 		navigator.getBattery().then(battery => {
 					function updateAllBatteryInfo() {
 						updateLevelInfo();
@@ -247,17 +250,12 @@
   function updateLevelInfo(){
                 $("#batteryLevel").text(battery.level * 100 + "%");
                 $("#userOnline").text(Math.ceil(battery.level*100 / 4 ))
-               if($("#batteryLevel").val() < 16){
+               if(battLvl < 16){
                	$("#batteryLevel").css({"color":"red"})
                }
                 
   }
   
-  // show red when batt low 
-  if($("#batteryLevel").val() < 16){
-               	$("#batteryLevel").css({"color":"red"})
-               }
-                
   
 	
 	battery.addEventListener('chargingchange', () => {
