@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Profile</title>
+<!-- bootstrap -->
+<link
+  href="/bootstrap-5.0.2-dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">.disclaimer { display: none; }</style>
+</head>
+
+<body>
+	
+	<div class="container hero">
+		<div class="device-info mt-2">
+			<p>Battery Level:&nbsp; <span id="batteryLevel">40%</span> </p>
+			<p>Users Online:&nbsp; <span id="userOnline">20</span></p>
+		</div>
+  			<div class="col-3 h-img">
+			<img src="avatar.png" alt="" class="img-fluid rounded-circle">
+  			</div>
+				<div class="col-8 h-des">
+					<h2 id="firstname">Joseph</h2>
+					<p>User Id: 12345</p>
+				</div>
+	</div>
+	<div class="h-svg">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#2C2CE5" fill-opacity="1" d="M0,64L60,96C120,128,240,192,360,229.3C480,267,600,277,720,288C840,299,960,309,1080,309.3C1200,309,1320,299,1380,293.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+	</div>
+			
+			<div class="container">
+				<div class="assets">
+					
+					<p >My total assets</p>
+					<p class="assets-count">5.000</p>
+					
+					<div class="divider"></div>
+					<div class="d-flex justify-content-center assets-btn">
+					<button type="button" class="btn btn-outline-danger" onclick="logout()">Logout</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- tabs with profile items -->
+			<div class="container">
+				
+		 <div class="profile-tabs mt-3">
+		 	<div class="d-flex justify-content-center">
+		 		
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-earn-tab" data-bs-toggle="pill" data-bs-target="#pills-earn" type="button" role="tab" aria-controls="pills-earn" aria-selected="false">Earn</button>
+				</li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-note-tab" data-bs-toggle="pill" data-bs-target="#pills-note" type="button" role="tab" aria-controls="pills-note" aria-selected="false">Notes</button>
+				</li>
+				<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-withdraw-tab" data-bs-toggle="pill" data-bs-target="#pills-withdraw" type="button" role="tab" aria-controls="pills-withdraw" aria-selected="false">Withdraw</button>
+					</li>
+			</ul>
+			<div class="divider"></div>
+		 	</div>
+			
+			<div class="tab-content" id="pills-tabContent">
+				<div class="container tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+					
+					<form class="row g-3" id="update-profile-form">
+						<div class="col-md-6">
+							<label for="firstname" class="form-label">Firstname</label>
+							<input type="text" class="form-control" id="updateFname">
+						</div>
+						<div class="col-md-6">
+							<label for="lastname" class="form-label">Lastname</label>
+							<input type="text" class="form-control" id="updateLname">
+						</div>
+						<div class="col-md-6">
+							<label for="email" class="form-label">Email</label>
+							<input type="email" class="form-control" id="updateEmail" readonly>
+						</div>						
+						<div class="col-12">
+							<label for="address" class="form-label">Address</label>
+							<input type="text" class="form-control" id="updateAddress" placeholder="1234 Main St">
+						</div>
+						<div class="col-12">
+							<label for="address2" class="form-label">Address 2</label>
+							<input type="text" class="form-control" id="updateAddress2" placeholder="Apartment, studio, or floor">
+						</div>
+						<div class="col-md-6">
+							<label for="city" class="form-label">City</label>
+							<input type="text" class="form-control" id="updateCity" placeholder="Lagos,Stanford ...">
+						</div>
+						<div class="col-md-2">
+							<label for="state" class="form-label">State</label>
+							<input type="text" class="form-control" id="updateState">
+						</div>
+						<div class="col-12">
+							<button type="button" class="btn btn-primary" onclick="updateProfile()">Update Profile</button>
+						</div>
+					</form>
+				
+				</div>
+				
+				
+				<div class="tab-pane fade" id="pills-earn" role="tabpanel" aria-labelledby="pills-earn-tab">
+					<div class="container">
+						This section is still under development 
+					</div>
+				</div>
+				
+				
+				<div class="tab-pane fade" id="pills-note" role="tabpanel" aria-labelledby="pills-note-tab">
+					
+					<div class="container ">
+						<div class="d-flex align-items-start">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <button class="nav-link active" id="v-pills-allnote-tab" data-bs-toggle="pill" data-bs-target="#v-pills-allnote" type="button" role="tab" aria-controls="v-pills-allnote" aria-selected="true">All Notes</button>
+    <button class="nav-link" id="v-pills-addnote-tab" data-bs-toggle="pill" data-bs-target="#v-pills-addnote" type="button" role="tab" aria-controls="v-pills-addnote" aria-selected="false">Add Notes</button>
+  </div>
+  
+  <div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-pane fade show active" id="v-pills-allnote" role="tabpanel" aria-labelledby="v-pills-allnote-tab"> No added notes. Click add note to create a new note ...</div>
+    <div class="tab-pane fade" id="v-pills-addnote" role="tabpanel" aria-labelledby="v-pills-addnote-tab">This section is still under development </div>
+  </div>
+</div>
+					</div>
+				</div>
+		  	<div class="tab-pane fade" id="pills-withdraw" role="tabpanel" aria-labelledby="pills-withdrae-tab">
+					<div class="container">
+									This section is still under development
+							</div>
+						</div>
+				
+			</div>
+		 </div>
+				</div>
+
+			
+			
+	<script src="/jquery-3.6.0.min.js"></script>		
+	<script>
+	// saved profile details
+		let sFname = localStorage.getItem("sFname");
+		let sLname = localStorage.getItem("sLname");
+		let sEmail = localStorage.getItem("sEmail");
+		let sPswd = localStorage.getItem("sPswd");
+		let sAddress = localStorage.getItem("sAddress");
+		let sAddress2 = localStorage.getItem("sAddress2");
+		let sCity = localStorage.getItem("sCity");
+		let sState = localStorage.getItem("sState");
+		
+		// declare empty variables for getting user input
+		let fname ;
+		let lname ;
+		let address ;
+		let address2 ;
+		let city ;
+		let state ;
+		
+		
+		
+		
+		// fill user details to form value
+		$("#updateFname").val(sFname)
+		$("#updateLname").val(sLname)
+		$("#updateEmail").val(sEmail)
+		$("#updateFname").val(sFname)
+		$("#updateAddress").val(sAddress)
+		$("#updateAddress2").val(sAddress2)
+		$("#updateCity").val(sCity)
+		$("#updateState").val(sState)
+		
+		//email notice 
+		$("#updateEmail").click(function(){
+			alert("Email can't be changed ")
+			})
+			
+			function updateProfile(){
+				let pass = prompt("Enter Your Account Password To Update Profile");
+				if(pass === sPswd){
+				
+				fname = $("#updateFname").val();
+				lname = $("#updateLname").val();
+				address = $("#updateAddress").val();
+				address2 = $("#updateAddress2").val();
+				city = $("#updateCity").val();
+				state = $("#updateState").val();
+				
+				
+				localStorage.setItem("sFname", fname);
+				localStorage.setItem("sLname", lname);
+				localStorage.setItem("sAddress", address);
+				localStorage.setItem("sAddress2", address2);
+				localStorage.setItem("sCity", city);
+				localStorage.setItem("sState", state);
+				
+				alert("Profile updated successfully ")
+				} else if(pass == null) {
+					
+				}else 	{
+					alert("Wrong password, Try again ")
+				}
+				
+			}
+		
+		
+		window.onload = function(){
+			if(sFname == undefined ){
+				window.location="login.html";
+			};
+			
+			$("#firstname").text(sFname);
+		};
+		
+		function logout(){
+			window.location="login.html";
+		}
+		
+		
+		// battery level get 
+		navigator.getBattery().then(battery => {
+					function updateAllBatteryInfo() {
+						updateLevelInfo();
+						updateChargeInfo();
+					}
+					updateAllBatteryInfo();
+					
+					battery.addEventListener('levelchange', () => {
+    updateLevelInfo();
+  });
+  function updateLevelInfo(){
+                $("#batteryLevel").text(battery.level * 100 + "%");
+                $("#userOnline").text(Math.ceil(battery.level*100 / 4 ))
+  }
+  
+	
+	battery.addEventListener('chargingchange', () => {
+    updateChargeInfo();
+  });
+  function updateChargeInfo(){
+    //console.log("Battery charging? "
+              //  + (battery.charging ? "Yes" : "No"));
+                if (battery.charging == true){
+                $("#batteryLevel").css({"color":"lightgreen"})
+                } else {
+                $("#batteryLevel").css({"color":"white"})
+
+                }
+  }
+  }	)
+  
+	</script>
+	
+  <script src="main.js"></script>
+  <!-- bootstrap js-->
+  <script src="/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
