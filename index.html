@@ -45,7 +45,7 @@
 				<div class="assets">
 					
 					<p >My total assets</p>
-					<p class="assets-count">5.000</p>
+					<p class="assets-count" id="balance">5</p>
 					
 					<div class="divider"></div>
 					<div class="d-flex justify-content-center assets-btn">
@@ -134,13 +134,37 @@
   </div>
   
   <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="v-pills-allnote" role="tabpanel" aria-labelledby="v-pills-allnote-tab"> No added notes. Click add note to create a new note ...</div>
+
+  	
+    <div class="tab-pane fade show active" id="v-pills-allnote" role="tabpanel" aria-labelledby="v-pills-allnote-tab">
+    	<div id="notes">
+    		<div class="noteCard my-2 mx-2 card">
+					<div class="card-body">
+						<h5 class="card-title">
+							Note ${index + 1}
+						</h5>
+						<p class="card-text">
+							hrhrhrjejjeebebebejehhehebe
+						</p>
+						
+						<div class="d-flex justify-content-center">
+					<button id="${index}" onclick=
+						"deleteNote(this.id)"
+						class="btn btn-primary delete-btn">
+						Delete Note
+					</button>
+						</div>
+				</div>
+			</div>
+			
+    	</div>
+    	 </div>
     <div class="tab-pane fade" id="v-pills-addnote" role="tabpanel" aria-labelledby="v-pills-addnote-tab">
     	<form class="row g-2" id="add-note-form">
     		<div class="col-md-4 mt-2">
     			<textarea class="form-control" cols="50" rows="5" width="600px" id="add-note"></textarea>
     			<div class="d-flex justify-content-center">
-    				<button type="button" class="btn btn-primary mt-1" onclick="addNote()">Add to notes </button>
+    				<button type="button" class="btn btn-primary mt-2" id="addNote">Add to notes </button>
 
     			</div>
     		</div>
@@ -153,7 +177,27 @@
 				</div>
 		  	<div class="tab-pane fade" id="pills-withdraw" role="tabpanel" aria-labelledby="pills-withdraw-tab">
 					<div class="container">
-									This section is still under development
+						<form class="row">
+							<div class="col-md-4 mt-2">
+								<div class="d-flex justify-content-center">
+							   	<label for="amount" class="form-label">Enter Amount To Withdraw</label>
+								</div>
+							<input type="number" class=" form-control" id="amount">
+							</div>
+							
+							<div class="col-md-4 mt-3">
+								<div class="d-flex justify-content-center">
+								<label for="wallet" class="form-label">Enter USDT(Trc-20) wallet address</label>
+							
+									</div>
+						<input type="text" class=" form-control" id="wallet">
+									</div>
+									
+									<div class="d-flex justify-content-center mt-3">
+										<button type="button" class="btn btn-primary" id="withdrawBtn">Withdraw</button>
+									</div>
+							
+						</form>
 							</div>
 						</div>
 				
@@ -165,7 +209,9 @@
 			
 	<script src="/jquery-3.6.0.min.js"></script>		
 
-	
+ 	<!--note js file include -->
+	<script src="note.js"></script>
+	<!-- main JavaScript file -->
   <script src="main.js"></script>
   <!-- bootstrap js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

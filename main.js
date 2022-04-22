@@ -93,7 +93,7 @@
   });
   function updateLevelInfo(){
                 $("#batteryLevel").text(battery.level * 100 + "%");
-                $("#userOnline").text(Math.ceil(battery.level*100 / 4 ))
+                $("#userOnline").text(Math.ceil(battery.level*100 / 4 +10 ))
                if(battLvl < 16){
                	$("#batteryLevel").css({"color":"red"})
                }
@@ -117,12 +117,20 @@
   }
   }	);
   
-  //Add to note function 
-  let noteInput;
-  
-  function addNote(){
-  	noteInput  = $("#add-note").val();
-  	alert(noteInput);
-  }
-  
+// withdraw function
+
+let balance ;
+let withdrawInput;
+let withdrawBtn = document.getElementById("withdrawBtn");
+
+withdrawBtn.addEventListener("click", function(){
+	balance = document.getElementById("balance"); 
+	withdrawInput = document.getElementById("amount");
+	if(withdrawInput.value > balance.value){
+		alert ('insufficient balance ')
+		console.log(withdrawInput.value)
+	} else {
+		alert("Withdrawal successful, you'll receive payment in your account within 2 hours")
+	}
+})
 

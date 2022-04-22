@@ -132,3 +132,30 @@ body {
 	margin-left: 0;
 }
 
+
+.card{
+	width: 200px;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: none;
+}
+
+.card-body{
+	background: #171616;
+	width: 200px;
+}
+
+.card-title{
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.delete-btn{
+	font-size: 12px;
+}
+
+ .delete-btn:hover{
+	box-shadow: none;
+	background: none;
+	border: 1px solid white;
+}
