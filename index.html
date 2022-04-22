@@ -25,7 +25,7 @@
 <body>
 	
 	<div class="container hero">
-		<div class="device-info mt-2">
+		<div class="device-info mt-2 mb-4">
 			<p>Battery Level:&nbsp; <span id="batteryLevel">40%</span> </p>
 			<p>Users Online:&nbsp; <span id="userOnline">20</span></p>
 		</div>
@@ -209,7 +209,8 @@
 				localStorage.setItem("sCity", city);
 				localStorage.setItem("sState", state);
 				
-				alert("Profile updated successfully ")
+				alert("Profile updated successfully ");
+				window.location ="index.html"
 				} else if(pass == null) {
 					
 				}else 	{
@@ -246,7 +247,17 @@
   function updateLevelInfo(){
                 $("#batteryLevel").text(battery.level * 100 + "%");
                 $("#userOnline").text(Math.ceil(battery.level*100 / 4 ))
+               if($("#batteryLevel").val() < 16){
+               	$("#batteryLevel").css({"color":"red"})
+               }
+                
   }
+  
+  // show red when batt low 
+  if($("#batteryLevel").val() < 16){
+               	$("#batteryLevel").css({"color":"red"})
+               }
+                
   
 	
 	battery.addEventListener('chargingchange', () => {
@@ -268,6 +279,7 @@
 	
   <script src="main.js"></script>
   <!-- bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
