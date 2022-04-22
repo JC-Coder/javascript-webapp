@@ -122,4 +122,13 @@ body {
 	box-shadow: none;
 }
 
+.nav-pills{
+	box-sizing: border-box ;
+	max-width: 300px;
+}
+.btn-pill-1 {
+	width: 74px;
+	padding: 10px 5px 10px 5px;
+	margin-left: 0;
+}
 
