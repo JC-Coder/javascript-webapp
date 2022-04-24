@@ -8,6 +8,16 @@
 		let sCity = localStorage.getItem("sCity");
 		let sState = localStorage.getItem("sState");
 		
+		// display user balance
+		let balance = localStorage.getItem("balance");
+		let balanceInt = parseInt(balance);
+		if(balance == null) {
+			balance = 0;
+			$("#balance").text(balance +".000");
+		}else{
+		 $("#balance").text(balanceInt + ".000");
+		}
+		
 		// declare empty variables for getting user input
 		let fname ;
 		let lname ;
@@ -78,8 +88,7 @@
 		
 		
 		// battery level get 
-		let battLvl = $("#batteryLevel").val();
-		
+		let battLvl;
 		
 		navigator.getBattery().then(battery => {
 					function updateAllBatteryInfo() {
@@ -92,6 +101,8 @@
     updateLevelInfo();
   });
   function updateLevelInfo(){
+  	battLvl = document.getElementById("batteryLevel").value;
+  	
                 $("#batteryLevel").text(battery.level * 100 + "%");
                 $("#userOnline").text(Math.ceil(battery.level*100 / 4 +10 ))
                if(battLvl < 16){
@@ -119,18 +130,65 @@
   
 // withdraw function
 
-let balance ;
 let withdrawInput;
+let wallet;
 let withdrawBtn = document.getElementById("withdrawBtn");
 
 withdrawBtn.addEventListener("click", function(){
-	balance = document.getElementById("balance"); 
 	withdrawInput = document.getElementById("amount");
-	if(withdrawInput.value > balance.value){
-		alert ('insufficient balance ')
-		console.log(withdrawInput.value)
+	wallet = document.getElementById("wallet");
+	walletBal = localStorage.getItem("balance");
+	if(withdrawInput.value == "" | wallet.value == ""){
+		alert("Fill in all fields to complete withdrawal request");
+	}else if(withdrawInput.value < 7){
+		alert ("Minimum amount for withdrawal is 7 USDT ")
+	} else if(withdrawInput.value > walletBal){
+		alert ("insufficient balance")
 	} else {
-		alert("Withdrawal successful, you'll receive payment in your account within 2 hours")
+		let remainingBal = parseInt(walletBal) - parseInt(withdrawInput.value);
+		let remainingBal2 = remainingBal.toString();
+		localStorage.setItem("balance", remainingBal2);
+		$("#balance").text(remainingBal+".000");
+		alert("Withdrawal successful, you'll receive payment in your account within 2 hours");
+		window.location="index.html";
 	}
 })
 
+// timer for earning section 
+
+let sec = 60;
+let earnBtn = document.getElementById("earn-btn");
+let mineTime = document.getElementById("mineTime");
+mineTime.innerHTML = 60;
+let userBal = balanceInt;
+
+
+function earnTimer(){
+	timerInterval = setInterval(function(){
+		
+		sec -= 1;
+		mineTime.innerHTML = sec;
+		$("#status").text("Active");
+		$("#status").css({"color":"green"})
+		$(earnBtn).css({"background":"green"})
+		$(earnBtn).prop("disabled", true);
+		
+
+		if(sec == 0){
+			clearInterval(timerInterval);
+			mineTime.innerHTML = 60;
+			sec = 60;
+			$(earnBtn).prop("disabled", false);
+			$(earnBtn).css({"background":""})
+			$("#status").text("Inactive");
+		    $("#status").css({"color":"#0d6efd"})
+
+			//change user balance 
+			userBal +=1;
+			localStorage.setItem("balance", userBal);
+			userBalSaved = localStorage.getItem("balance");
+			$("#balance").text(userBalSaved +".000");		
+			
+		}
+	},1000)
+};

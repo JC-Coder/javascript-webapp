@@ -159,3 +159,22 @@ body {
 	background: none;
 	border: 1px solid white;
 }
+
+/* withdraw styling */
+
+#pills-withdraw input{
+	cursor: pointer;
+}
+
+/* earn styling */
+#earn-btn{
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	font-size: 18px;
+	border: none;
+}
+
+#earn-btn:focus{
+	box-shadow: none;
+}
